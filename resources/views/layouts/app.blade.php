@@ -61,14 +61,18 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <li><a href="/source/1"><img src="http://agronom.localhost/data/images/kolosokLogo.jpg" width="100" height="100" border="1">Колосок</a></li>
-                        <li><a href="/source/2"><img src="http://agronom.localhost/data/images/apkUa.png" width="100" height="100" border="1">АПКУА</a></li>
-                        <li><a href="/source/3"><img src="http://agronom.localhost/data/images/agroUkraine.png" width="100" height="100" border="1">agro-ukraine</a></li>
-                        <li><a href="/source/4"><img src="http://agronom.localhost/data/images/agrotender-logo.png" width="100" height="100" border="1">agrotender</a></li>
+
+                    
+
+                    @foreach ($sources as $source)
+                    
+                        <ul class="nav navbar-nav">
+                        <li><a href="{{ url('source/' . $source->id) }}"><img src="http://agronom.localhost/data/images/source{{ $source->id }}.jpg" width="50" height="21" border="1">{{ $source->title }}</a></li>
+                        
+                    @endforeach
 
                         @if (Auth::check())
-                        
+
                         
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
