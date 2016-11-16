@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Ad extends Model
 {
     protected $table = 'ad';
     
@@ -38,11 +38,11 @@ class Product extends Model
         return $this->belongsTo('App\Models\Source');
     }
     
-    // public function images(){
-    //     return $this->hasMany('App\Models\ProductImage', 'product_id');
-    // }
+    public function images(){
+        return $this->hasMany('App\Models\AdImage', 'ad_id');
+    }
     
-    // public function properties(){
-    //     return $this->hasMany('App\Models\ProductToProductProperty', 'product_id');
-    // }
+    public function properties(){
+        return $this->hasMany('App\Models\AdToAdProperty', 'ad_id');
+    }
 }

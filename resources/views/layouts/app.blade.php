@@ -37,7 +37,7 @@
 
     <body id="app-layout">
         <div class="container" style="background-color:#F44336;color:#fff;height:200px;">
-            <h1>Пшеница</h1>
+            <h1>хедер</h1>
         </div>
 
         <nav class="navbar navbar-default" data-spy="affix" data-offset-top="197" role="navigation">
@@ -54,7 +54,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img alt="NEWSUPERLED" src= "/data/logo.gif">
+                        <img alt="AGRONOM" src= "/data/logo.gif">
                     </a>
                 </div>
 

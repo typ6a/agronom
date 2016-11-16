@@ -10,43 +10,68 @@ use App\Repositories\SourcesRepository;
 
 class SourcesController extends Controller {
 
-    protected $sources;
+    protected $viewData = [];
 
-    /**
-     * Create a new controller instance.
-     *
-     * @param  CatalogRepository  $categories
-     * @return void
-     */
-    //public function __construct(SourcesRepository $sources) {
-    //    //$this->middleware('auth');
-    //
-    //    $this->$sources = $sources;
-    //}
+  
+    public function __construct(){
+        
+        $this->viewData['sources'] = \App\Models\Source::whereNull('parent_id')->get();
+    }
 
-    /**
-     * Display a list of all of the categories.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
+   
     public function index() {
-        $sources = \App\Models\Source::whereNull('parent_id')->get();
-        return view('sources.index', [
-            'sources' => $sources,
-               //'products' => $products
-        ]);
+        return view('sources.index', $this->viewData);
     }
 
     public function source($source_id = null) {
         $source = \App\Models\Source::find($source_id);
-        $sources = \App\Models\Source::where('parent_id', $source_id)->get();
+        // $sources = \App\Models\Source::where('parent_id', $source_id)->get();
+        $ads = \App\Models\Ad::where('source_id', '=', $source_id)->get();
        
-        return view('sources.source', [
-            'source' => $source,
-            'sources' => $sources,
-        ]);
+        $this->viewData['ads'] = $ads;
+        $this->viewData['some_different_var'] = 'some different var value';
+        $this->viewData['source'] = $source;
+
+        return view('sources.source', $this->viewData);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // http://products.localhost/agronom/ad/1123
     public function ad($ad_id) {

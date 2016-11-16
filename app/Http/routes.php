@@ -5,7 +5,10 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function () {
-        return view('welcome');
+    	$sources = \App\Models\Source::whereNull('parent_id')->get();
+        return view('welcome', [
+            'sources' => $sources,
+        ]);
     })->middleware('guest');
 
 
